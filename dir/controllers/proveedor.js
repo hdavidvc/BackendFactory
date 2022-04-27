@@ -35,7 +35,7 @@ exports.getProveedores = getProveedores;
 const getProveedor = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
     try {
-        connetion_1.default.query('SELECT * FROM Proveedor WHERE id = ? ', id, (error, resuls) => {
+        connetion_1.default.query('SELECT * FROM `persona` as p, Proveedor as e WHERE e.id_persona = p.id and estado = 1 and e.id = ?', id, (error, resuls) => {
             res.json(resuls);
         });
     }

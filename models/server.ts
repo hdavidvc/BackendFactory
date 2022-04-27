@@ -7,6 +7,8 @@ import AlmacenamientoRoutes from '../routers/almacenarmiento/almacenamiento';
 import EstanteriaRoutes from '../routers/almacenarmiento/estanteria';
 import UbicacionRoutes from '../routers/almacenarmiento/ubicacion';
 import MateriaRoutes from '../routers/materia';
+import OrdenRoutes from '../routers/ordenes/orden';
+import DetalleRoutes from '../routers/ordenes/detalle';
 
 class Server {
     private app;
@@ -18,6 +20,8 @@ class Server {
         estanteria: '/api/estanteria',
         ubicacion: '/api/ubicacion',
         materia: '/api/materiaprima',
+        detalleO: '/api/delletaorden',
+        orden: '/api/orden',
     }
 
     constructor() {
@@ -51,6 +55,8 @@ class Server {
         this.app.use(this.apiPath.estanteria, EstanteriaRoutes);
         this.app.use(this.apiPath.ubicacion, UbicacionRoutes);
         this.app.use(this.apiPath.materia, MateriaRoutes);
+        this.app.use(this.apiPath.detalleO, DetalleRoutes);
+        this.app.use(this.apiPath.orden, OrdenRoutes);
     }
 
     // async dbConnection() {

@@ -11,6 +11,8 @@ const almacenamiento_1 = __importDefault(require("../routers/almacenarmiento/alm
 const estanteria_1 = __importDefault(require("../routers/almacenarmiento/estanteria"));
 const ubicacion_1 = __importDefault(require("../routers/almacenarmiento/ubicacion"));
 const materia_1 = __importDefault(require("../routers/materia"));
+const orden_1 = __importDefault(require("../routers/ordenes/orden"));
+const detalle_1 = __importDefault(require("../routers/ordenes/detalle"));
 class Server {
     constructor() {
         this.apiPath = {
@@ -20,6 +22,8 @@ class Server {
             estanteria: '/api/estanteria',
             ubicacion: '/api/ubicacion',
             materia: '/api/materiaprima',
+            detalleO: '/api/delletaorden',
+            orden: '/api/orden',
         };
         this.app = (0, express_1.default)();
         this.port = process.env.PORT || '8050';
@@ -47,6 +51,8 @@ class Server {
         this.app.use(this.apiPath.estanteria, estanteria_1.default);
         this.app.use(this.apiPath.ubicacion, ubicacion_1.default);
         this.app.use(this.apiPath.materia, materia_1.default);
+        this.app.use(this.apiPath.detalleO, detalle_1.default);
+        this.app.use(this.apiPath.orden, orden_1.default);
     }
 }
 exports.default = Server;

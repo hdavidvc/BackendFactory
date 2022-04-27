@@ -17,7 +17,7 @@ export const getProveedor = async (req: Request, res: Response) => {
     const {id} = req.params;
 
     try {
-       pool.query('SELECT * FROM Proveedor WHERE id = ? ',id,(error, resuls)=> {
+       pool.query('SELECT * FROM `persona` as p, Proveedor as e WHERE e.id_persona = p.id and estado = 1 and e.id = ?',id,(error, resuls)=> {
         res.json(resuls)
     });
 

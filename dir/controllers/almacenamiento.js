@@ -157,7 +157,7 @@ class Almacenamiento {
         this.getUbicacion = (req, res) => __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
             try {
-                connetion_1.default.query('SELECT * FROM estanteria WHERE id_almacen = ? ', id, (error, resuls) => {
+                connetion_1.default.query('SELECT a.id, a.descripcion from almacen as a, materia_prima as ma, ubicacion as ubi where ma.id = ? and ubi.id_almacen = a.id and ma.id_ubicacion = ubi.id', id, (error, resuls) => {
                     res.json(resuls);
                 });
             }
