@@ -6,7 +6,7 @@ export default class Almacenamiento {
     public data:any  = [];
     public getAlmacenes = async (req: Request, res: Response) => {
         
-        pool.query('SELECT * FROM almacen WHERE estado = "Disponible"', (error, resuls)=> {
+        pool.query('SELECT * FROM almacen', (error, resuls)=> {
 
             resuls.forEach((element:any) => {
                const  {id, ...demas} = element;
@@ -53,7 +53,7 @@ export default class Almacenamiento {
         const {id} = req.params;
         const perso = req.body;
         try {
-            await pool.query('UPDATE persona set ? WHERE id = ?', [perso,id], (error, resuls)=> {            
+            await pool.query('UPDATE almacen set ? WHERE id = ?', [perso,id], (error, resuls)=> {            
                 res.json({
                     msg: 'Almacen actualidado',               
                 });
@@ -126,9 +126,9 @@ export default class Almacenamiento {
         const {id} = req.params;
         const perso = req.body;
         try {
-            await pool.query('UPDATE persona set ? WHERE id = ?', [perso,id], (error, resuls)=> {            
+            await pool.query('UPDATE estanteria set ? WHERE id = ?', [perso,id], (error, resuls)=> {            
                 res.json({
-                    msg: 'Almacen actualidado',               
+                    msg: 'Estanteria actualidado',               
                 });
             })
        

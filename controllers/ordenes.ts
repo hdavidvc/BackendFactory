@@ -93,6 +93,19 @@ export default class Orden {
         });
     
     }
+     getordenesR = async (req: Request, res: Response) => {
+
+    
+        pool.query('SELECT * FROM `orden_compra` where estado = "Recibida" ', (error, resuls)=> {
+            resuls.forEach((element:any,i:number) => {
+                resuls[i].fecha = resuls[i].fecha.toLocaleDateString("es-ES")                
+            });
+            res.json(
+                resuls
+                 )
+        });
+    
+    }
     //TODO falta por nombre o id
     
      getorden = async (req: Request, res: Response) => {

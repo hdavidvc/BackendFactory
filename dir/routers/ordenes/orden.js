@@ -8,6 +8,7 @@ const ordenes_1 = __importDefault(require("../../controllers/ordenes"));
 const router = (0, express_1.Router)();
 const orden = new ordenes_1.default();
 router.get('/', orden.getordenes);
+router.get('/recibidas', orden.getordenesR);
 router.get('/:id', orden.getorden);
 router.post('/', orden.postorden);
 router.put('/:id', orden.putorden);

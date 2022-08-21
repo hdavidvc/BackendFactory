@@ -92,6 +92,14 @@ class Orden {
                 res.json(resuls);
             });
         });
+        this.getordenesR = (req, res) => __awaiter(this, void 0, void 0, function* () {
+            connetion_1.default.query('SELECT * FROM `orden_compra` where estado = "Recibida" ', (error, resuls) => {
+                resuls.forEach((element, i) => {
+                    resuls[i].fecha = resuls[i].fecha.toLocaleDateString("es-ES");
+                });
+                res.json(resuls);
+            });
+        });
         //TODO falta por nombre o id
         this.getorden = (req, res) => __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;

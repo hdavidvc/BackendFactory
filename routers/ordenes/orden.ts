@@ -5,6 +5,7 @@ const router = Router();
 const orden = new Ordenes()
 
 router.get('/', orden.getordenes);
+router.get('/recibidas', orden.getordenesR);
 router.get('/:id', orden.getorden);
 router.post('/', orden.postorden);
 router.put('/:id', orden.putorden);

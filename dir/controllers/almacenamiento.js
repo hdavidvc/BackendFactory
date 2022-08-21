@@ -28,7 +28,7 @@ class Almacenamiento {
     constructor() {
         this.data = [];
         this.getAlmacenes = (req, res) => __awaiter(this, void 0, void 0, function* () {
-            connetion_1.default.query('SELECT * FROM almacen WHERE estado = "Disponible"', (error, resuls) => {
+            connetion_1.default.query('SELECT * FROM almacen', (error, resuls) => {
                 resuls.forEach((element) => {
                     const { id } = element, demas = __rest(element, ["id"]);
                     this.data.push(demas);
@@ -64,7 +64,7 @@ class Almacenamiento {
             const { id } = req.params;
             const perso = req.body;
             try {
-                yield connetion_1.default.query('UPDATE persona set ? WHERE id = ?', [perso, id], (error, resuls) => {
+                yield connetion_1.default.query('UPDATE almacen set ? WHERE id = ?', [perso, id], (error, resuls) => {
                     res.json({
                         msg: 'Almacen actualidado',
                     });
@@ -122,9 +122,9 @@ class Almacenamiento {
             const { id } = req.params;
             const perso = req.body;
             try {
-                yield connetion_1.default.query('UPDATE persona set ? WHERE id = ?', [perso, id], (error, resuls) => {
+                yield connetion_1.default.query('UPDATE estanteria set ? WHERE id = ?', [perso, id], (error, resuls) => {
                     res.json({
-                        msg: 'Almacen actualidado',
+                        msg: 'Estanteria actualidado',
                     });
                 });
             }
