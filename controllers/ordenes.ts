@@ -83,6 +83,19 @@ export default class Orden {
      getordenes = async (req: Request, res: Response) => {
 
     
+        pool.query('SELECT * FROM `orden_compra` ', (error, resuls)=> {
+            resuls.forEach((element:any,i:number) => {
+                // resuls[i].fecha = resuls[i].fecha.toLocaleDateString("es-ES")                
+            });
+            res.json(
+                resuls
+                 )
+        });
+    
+    }
+     getordenesP = async (req: Request, res: Response) => {
+
+    
         pool.query('SELECT * FROM `orden_compra` where estado = "Pendiente" ', (error, resuls)=> {
             resuls.forEach((element:any,i:number) => {
                 resuls[i].fecha = resuls[i].fecha.toLocaleDateString("es-ES")                

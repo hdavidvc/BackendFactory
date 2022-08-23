@@ -64,6 +64,22 @@ export default class Almacenamiento {
         }
     
     }
+     putAlmacen2 = async (req: Request, res: Response) => {
+    
+        const {id} = req.params;
+        const perso = req.body;
+        try {
+            await pool.query('UPDATE almacen set estado = "ocupado" WHERE id = ?', [id], (error, resuls)=> {            
+                res.json({
+                    msg: 'Almacen actualidado',               
+                });
+            })
+       
+        } catch (error) {
+            res.json(error);
+        }
+    
+    }
      deleteAlmacen = async (req: Request, res: Response) => {
         const {id} = req.params;
         const  {cargo, ...perso} = req.body;
@@ -168,7 +184,7 @@ export default class Almacenamiento {
         const {id} = req.params;
     
         try {
-           pool.query('SELECT a.id, a.descripcion from almacen as a, materia_prima as ma, ubicacion as ubi where ma.id = ? and ubi.id_almacen = a.id and ma.id_ubicacion = ubi.id',id,(error, resuls)=> {
+           pool.query('SELECT a.id, a.descripcion from almacen as a, materia_prima as ma, ubicacion as ubi where ma.id = ? and ubi.id_almacen = a.id and ma.id_ubicacion = ubi.id and a.estado="Disponible"',id,(error, resuls)=> {
             res.json(resuls)
         });
     

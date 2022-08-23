@@ -74,6 +74,20 @@ class Almacenamiento {
                 res.json(error);
             }
         });
+        this.putAlmacen2 = (req, res) => __awaiter(this, void 0, void 0, function* () {
+            const { id } = req.params;
+            const perso = req.body;
+            try {
+                yield connetion_1.default.query('UPDATE almacen set estado = "ocupado" WHERE id = ?', [id], (error, resuls) => {
+                    res.json({
+                        msg: 'Almacen actualidado',
+                    });
+                });
+            }
+            catch (error) {
+                res.json(error);
+            }
+        });
         this.deleteAlmacen = (req, res) => __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
             const _a = req.body, { cargo } = _a, perso = __rest(_a, ["cargo"]);
@@ -157,7 +171,7 @@ class Almacenamiento {
         this.getUbicacion = (req, res) => __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
             try {
-                connetion_1.default.query('SELECT a.id, a.descripcion from almacen as a, materia_prima as ma, ubicacion as ubi where ma.id = ? and ubi.id_almacen = a.id and ma.id_ubicacion = ubi.id', id, (error, resuls) => {
+                connetion_1.default.query('SELECT a.id, a.descripcion from almacen as a, materia_prima as ma, ubicacion as ubi where ma.id = ? and ubi.id_almacen = a.id and ma.id_ubicacion = ubi.id and a.estado="Disponible"', id, (error, resuls) => {
                     res.json(resuls);
                 });
             }

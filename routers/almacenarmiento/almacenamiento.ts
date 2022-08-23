@@ -8,6 +8,7 @@ router.get('/', almacenar.getAlmacenes);
 router.get('/:id', almacenar.getAlmacen);
 router.post('/', almacenar.postAlmacen);
 router.put('/:id', almacenar.putAlmacen);
+router.put('/estado/:id', almacenar.putAlmacen2);
 router.delete('/:id', almacenar.deleteAlmacen);
 
 // console.log(prueba);
